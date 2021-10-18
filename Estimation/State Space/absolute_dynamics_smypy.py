@@ -9,7 +9,7 @@ Ib31, Ib32, Ib33 = symbols('Ib31 Ib32 Ib33')
 Ib = Matrix([[Ib11, Ib12, Ib13],[Ib21, Ib22, Ib23],[Ib31, Ib32, Ib33]])  #moment of inertia of body
 
 Tb1 , Tb2, Tb3 = symbols('Tb1 Tb2 Tb3')
-Tb = Matrix([[Tb1],[Tb2],[Tb3]])                   #control input torque
+Tb = Matrix([[Tb1],[Tb2],[Tb3]])   #control input torque
 
 wbo1, wbo2, wbo3 = symbols('wbo1 wbo2 wbo3')
 wbo = Matrix([[wbo1],[wbo2],[wbo3]]) #angular velocity of body wrt orbital
@@ -22,11 +22,13 @@ Abo = Matrix([[Abo11, Abo12, Abo13],[Abo21, Abo22, Abo23],[Abo31, Abo32, Abo33]]
 woI1, woI2, woI3 = symbols('woI1 woI2 woI3')
 woI = Matrix([[woI1],[woI2],[woI3]]) #angular velocity of inertial wrt orbital
 
-dwoI1, dwoI2, dwoI3 = symbols('dwoI1 dwoI2 dwoI3')
-dwoI = Matrix([[dwoI1], [dwoI2], [dwoI3]]) #angular acceleration i.e differentiation of angular vecloity of orbital wrt angular frame
+dwbo1, dwbo2, dwbo3 = symbols('dwbo1 dwbo2 dwbo3')
+dwbo = Matrix([[dwbo1], [dwbo2], [dwbo3]]) #angular acceleration i.e differentiation of angular vecloity of orbital wrt angular frame
+
+dwbo = Ib.inv()*(Tb - (wbo + Abo*woI).cross(Ib*(Abo*woI + wbo))) 
 
 print('Angular acceleration term / angular velocity derivative')
-print(Ib.inv()*(Tb - (wbo + Abo*woI).cross(Ib*(Abo*dwoI + wbo))))  
+print(Ib.inv()*(Tb - (wbo + Abo*woI).cross(Ib*(Abo*woI + wbo))))  
 
 alpha1, alpha2, alpha3 = symbols('alpha1 alpha2 alpha3')  #euler angles describing attitude from body to orbital frame
 alpha = Matrix([[alpha1],[alpha2],[alpha3]])
