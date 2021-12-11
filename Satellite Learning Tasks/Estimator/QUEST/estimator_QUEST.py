@@ -1,8 +1,8 @@
 import numpy as np
 from numpy.core.fromnumeric import trace
 
-vector_B_st = np.array([[0.82124793099839, 	-0.13064801039884, 	0.555412399222135],[0.927474543469896, 	0.347581781638122,	0.137760213010057],[0.74689886393272, 	0.491107738240982, 	-0.448280354795789],[-0.526977658067361, 	-0.0834291004412838, 	0.845774280229305],[0.667992627719213, 	-0.707212298030447, 	0.231595800538946]])
-vector_I_m = np.array([[-0.82225186031413, 	-0.192660630484306, 	0.535521950690485],[0.636821431291897, 	0.762830374553013, 	-0.112019124736129],[0.58514651857146, 	0.464858613526747, 	-0.664462204518579],[-0.663963642158762, 	0.13626227147481, 	0.73524477234714],[0.799516146751635, 	-0.0477717558424112, 	0.598741839549526]])
+vector_B_st = np.array([[-0.82124793099839, 	-0.13064801039884, 	0.555412399222135],[0.927474543469896, 	0.347581781638122,	0.137760213010057]])
+vector_I_m = np.array([[-0.82225186031413, 	-0.192660630484306, 	0.535521950690485],[0.636821431291897, 	0.762830374553013, 	-0.112019124736129]])
 I = np.identity(3)
 
 #take inputs here as numpy array from the testing file and append them to vector_B_st and vector_I_m, these will be arrays of array
@@ -37,23 +37,27 @@ def newtonRaphson( x ):
     h = func(x) / dfunc(x)
     while abs(h) >= 0.0001:  #our limits
         h = func(x)/dfunc(x)
-        #print(x)
         # x(i+1) = x(i) - f(x) / f'(x)
         x = x - h
-     
     return x
  
 # Driver program to test above
  # Initial values assumed
 lambda_max = newtonRaphson(lambda_0)
 
-#print(lambda_max)
+print(lambda_max)
 
 rho = lambda_max + np.trace(B)
 temp = np.matmul(np.linalg.det(rho*I - S)*np.linalg.inv(rho*I - S), np.transpose(z))
 #print(temp)
 
 quaternion_estimate = np.array([[temp[0]],[temp[1]],[temp[2]],[np.linalg.det(rho*I - S)]])
-print(quaternion_estimate)
+#print(quaternion_estimate)
 quaternion_estimate = (1/np.inner(np.transpose(quaternion_estimate),np.transpose(quaternion_estimate))**0.5)*quaternion_estimate  #normalisation
-print(quaternion_estimate)
+print(quaternion_estimate) #convention is vector first then scalar
+#print(np.trace(B))
+#print(S)
+#print(rho*I - S)
+#print(np.linalg.inv(rho*I - S))
+#print(np.linalg.det(rho*I - S))
+
