@@ -20,11 +20,3 @@ def sample(t):
         I = (v_p[cycle_no - 1] / RESISTANCE) * math.exp(
             -RESISTANCE * (t - (cycle_no - 1) * PWM_TIME - t_on) / INDUCTANCE)
     return I
-
-
-CURRENT = np.zeros(int(CONTROL_TIME / PWM_TIME)+1)
-time = 0
-for i in range(int(CONTROL_TIME / PWM_TIME)):
-    CURRENT[i] = sample(time)
-    time += time_step
-    print(CURRENT[i])
