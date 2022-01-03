@@ -1,101 +1,52 @@
 Quality Assurance Report
 ====
 
-tag_2.m
+KalmanFilter.ipynb
 ----
 
 ### Iteration - 1
 
-**Code Author:** Millen Kanabar
+**Code Author:** Shreya JVS
 
 
-**Review requested by:** Millen Kanabar
+**Review requested by:** Shreya JVS
 
 
-**Reviewer:** Aravind Bharathi
+**Reviewer:** Adhyyan Mansukhani
 
 
-**Date of review:**    30/05/2020
+**Date of review:**    01/01/2022
 
 
 **Permanent Links:**
 
-1. https://github.com/TheWeepingSage/STADS/blob/master/Feature_Extraction/Functions/tag_2.m 
-
-2. https://github.com/TheWeepingSage/STADS/blob/master/Feature_Extraction/Functions/README_tag_2.pdf
+1. https://github.com/Student-Satellite-IITB/RVD/blob/2441afb4db69e68ae72b8de026017b9002ca94ff/Estimation/Kalman%20Filter%20Learning/KalmanFilter.ipynb
 
 **QA suggestions:**
 
-1. Include an explanation for the columns of arr_sums
+1. convert the .ipynb file to a .py file as well
 
-2. Change the name of the iterator variable to avoid confusion as the word 'tag' appears frequently in the block
+2. constants such as m_a, m_b, v_U should be capitalised
 
-3. Eliminate the need to initialise variables in the last few lines and instead switch up the output of the function
+3. Include a plot of error in prediction to showcase the working of the algorithms
+
+4. the suffix _m is for measured quantities so I think a different name should be given when you are using variables to define the standard deviation of the measurement, like in SIGMA_POS_M, SIGMA_VEL_M, SIGMA_W_BIB_M
 
 
 **Implementation:**
 
-1. arr_sums(1) is the summation of  intensity times x coordinate
-...
-
-2. i_set_tags, j_set_tags
-
-3. function [arr_sums(:, 1), arr_sums(:, 2)...
-
-
-**Post-QA Permanent Links:**
-
-1.
-
-2.
-
-================================================================
-
-### Iteration - 2
-
-**Code Author:** Name of the author of the original code
-
-
-**Review requested by:** Name of the person who is requesting the review *Eg: PQR*
-
-
-**Reviewer:** Name of the allotted reviewer
-
-
-**Date of review:**	DD/MM/YYYY
-
-
-**Permanent Links:**
-
 1. 
+...
 
 2. 
 
 3. 
 
 
-**QA suggestions:**
-> Any modifications/additions/deletions to be made to the code. It also includes any flaws/mistakes that need to be corrected in the code
-*Eg:* 1. Add formula for func1 in comments
-
-2. ‘+’ sign is missing in func2 line2
-
-3. V_ not added for vector variable pos_i
-
-4. Add definition of equinox in README file
-
-
-**Implementation:**
-> The changes implemented as suggested by the review points will be documented
-*Eg:*1. All changes are implemented
-
-
 **Post-QA Permanent Links:**
 
 1.
 
 2.
-
-3.
 
 ================================================================
